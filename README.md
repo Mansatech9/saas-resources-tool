@@ -1,2 +1,3 @@
-# ticket-crafter
-Marketplace for event tickets with live queue updates, purchase limits, refunds, and seller management.
+# saas-resources-tool
+
+Business owners that will allow their employees to book holidays / time off from their job.
