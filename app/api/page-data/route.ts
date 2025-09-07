@@ -210,34 +210,25 @@ const startupPlanList: startupPlan[] = [
 
 const faqList: faq[] = [
   {
-    faq_que: 'What services does Awake Agency offer?',
+    faq_que: 'What is LeaveFlow?',
     faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+      'LeaveFlow is an all-in-one platform to manage employee leave requests, approvals, and tracking—designed to eliminate spreadsheets and manual processes.',
   },
   {
-    faq_que: 'How long does a typical project take?',
+    faq_que: 'How does LeaveFlow save time for HR teams?',
     faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+      'By automating approvals, centralizing leave requests, and generating reports, LeaveFlow reduces HR overhead and improves efficiency.',
   },
   {
-    faq_que: 'How is pricing structured at Awake Agency?',
+    faq_que: 'Can employees request leave directly?',
     faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+      'Yes, employees can submit requests directly through the portal, and managers can approve or reject them instantly.',
   },
+ 
   {
-    faq_que: 'Do you offer ongoing support after project completion?',
+    faq_que: 'Is there reporting for managers?',
     faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
-  },
-  {
-    faq_que: 'How often will I receive updates on my project?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
-  },
-  {
-    faq_que: 'How often will I receive updates on my project?',
-    faq_ans:
-      'Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages for clients needing regular updates or technical assistance.',
+      'Managers can access detailed reports and analytics to understand leave patterns, productivity, and team availability.',
   },
 ]
 
