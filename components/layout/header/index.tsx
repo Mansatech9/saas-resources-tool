@@ -149,7 +149,7 @@ const Header = () => {
                         alt='Image'
                         width={25}
                         height={25}
-                        quality={100}
+                        quality={75}
                         className='rounded-full cursor-pointer'
                       />
                       {/* <p className='group-hover:text-white text-dark_black dark:text-white w-full capitalize'>

@@ -100,6 +100,7 @@ function Subscription() {
                                 alt='icon'
                                 width={20}
                                 height={20}
+                                quality={100}
                               />
                               <p className={`${items.text_color}`}>{feature}</p>
                             </li>

@@ -43,6 +43,7 @@ const Footer = () => {
                       alt='social-icon'
                       height={20}
                       width={20}
+                      quality={100}
                     />
                     <Image
                       src={item.dark_icon}
@@ -50,6 +51,7 @@ const Footer = () => {
                       alt='social-icon'
                       height={20}
                       width={20}
+                      quality={100}
                     />
                   </Link>
                 )

@@ -66,7 +66,7 @@ function CustomerStories() {
                         width={344}
                         height={220}
                         className='w-full h-52'
-                        unoptimized={true}
+                        quality={100}
                       />
                     </div>
                   </div>

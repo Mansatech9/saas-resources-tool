@@ -14,6 +14,7 @@ const SingleBrand = ({ brand }: { brand:any }) => {
           height={50}
           width={130}
           className='dark:hidden swiper-logo-image h-10'
+          priority
         />
         <Image
           src={darkImg}
@@ -21,6 +22,7 @@ const SingleBrand = ({ brand }: { brand:any }) => {
           height={50}
           width={130}
           className='dark:block hidden swiper-logo-image h-10'
+          priority
         />
       </div>
     </Slider.Slide>
