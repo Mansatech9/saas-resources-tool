@@ -3,6 +3,8 @@ import { type Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
+import Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer/footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,7 +35,14 @@ export default function RootLayout({
              {/* <MaxWidthWrapper> */}
          
        
-          {children}
+         {/* ---------------------Header Starts-----------------  */}
+            <Header />
+            {/* ---------------------Header Ends-------------------  */}
+            {children}
+            {/* ---------------------Footer Starts-----------------  */}
+            <Footer />
+            {/* ---------------------Footer Ends-----------------  */}
+            {/* <ScrollToTop /> */}
           {/* </MaxWidthWrapper>  */}
         </body>
       </html>

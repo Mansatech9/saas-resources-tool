@@ -41,7 +41,7 @@ function HeroSection() {
               {...bottomAnimation}
               className='relative flex flex-col text-center items-center '
             >
-              <h1 className=' text-8xl font-medium w-full'>
+              <h1 className='text-5xl  md:text-8xl font-medium w-full'>
                 Effortless Time Off Management with
                 <span className='instrument-font italic font-normal dark:text-white/70'>
                   {' '}
