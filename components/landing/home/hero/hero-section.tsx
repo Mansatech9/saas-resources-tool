@@ -4,7 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import StarRating from '../../shared/star-rating'
+import StarRating from '@/components/shared/star-rating'
+
 
 function HeroSection() {
   const ref = useRef(null)
