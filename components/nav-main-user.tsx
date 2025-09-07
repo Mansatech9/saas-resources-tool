@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Link, useLocation } from "react-router-dom";
 
-export function NavProjects({ projects }) {
+export function NavMainUser({ projects }) {
   const { isMobile } = useSidebar();
   const location = useLocation();
   const buttonVariants = {
@@ -26,7 +26,7 @@ export function NavProjects({ projects }) {
   }
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Event</SidebarGroupLabel>
+      <SidebarGroupLabel>User Management</SidebarGroupLabel>
       <SidebarMenu>
         {projects.map((item) => {
           const isActive = location.pathname === item.url;

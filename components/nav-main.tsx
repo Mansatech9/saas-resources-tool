@@ -1,78 +1,151 @@
-"use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
-
+import { ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 
-export function NavMain({
-  items,
-}: {
-  items: {
-    title: string
-    url: string
-    icon: LucideIcon
-    isActive?: boolean
-    items?: {
-      title: string
-      url: string
-    }[]
-  }[]
-}) {
+const itemVariants = {
+  open: { opacity: 1, height: "auto", transition: { duration: 0.3 } },
+  closed: { opacity: 0, height: 0, transition: { duration: 0.3 } },
+};
+
+const buttonVariants = {
+  hover: { scale: 1.05 },
+};
+
+export function NavMain({ items }: { items: any[] }) {
+  const pathname = usePathname();
+
+  // Save sidebar scroll position before navigating
+  const handleLinkClick = () => {
+    const sidebarContent = document.querySelector(".sidebar-content");
+    if (sidebarContent) {
+      sessionStorage.setItem("sidebarScrollPosition", sidebarContent.scrollTop.toString());
+    }
+  };
+
+  React.useEffect(() => {
+    const sidebarContent = document.querySelector(".sidebar-content");
+    const scrollPosition = sessionStorage.getItem("sidebarScrollPosition");
+
+    if (sidebarContent && scrollPosition) {
+      sidebarContent.scrollTop = parseInt(scrollPosition, 10);
+    }
+  }, [pathname]);
+
+  if (!items || items.length === 0) {
+    return null;
+  }
+
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>Home</SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item) => (
-          <Collapsible key={item.title} asChild defaultOpen={item.isActive}>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip={item.title}>
-                <a href={item.url}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </a>
-              </SidebarMenuButton>
-              {item.items?.length ? (
-                <>
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuAction className="data-[state=open]:rotate-90">
-                      <ChevronRight />
-                      <span className="sr-only">Toggle</span>
-                    </SidebarMenuAction>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenuSub>
-                      {item.items?.map((subItem) => (
+        {items.map((item) => {
+          const hasSubItems = item.items && item.items.length > 0;
+          const isParentActive = hasSubItems
+            ? item.items.some((subItem: any) => pathname.startsWith(subItem.url))
+            : pathname.startsWith(item.url);
+
+          if (!hasSubItems) {
+            return (
+              <SidebarMenuItem key={item.title}>
+                <Link href={item.url} onClick={handleLinkClick}>
+                  <motion.div variants={buttonVariants} whileHover="hover">
+                    <SidebarMenuButton
+                      tooltip={item.title}
+                      className={`rounded-md transition-colors duration-200 ${
+                        pathname.startsWith(item.url)
+                          ? "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-200"
+                          : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                      }`}
+                    >
+                      {item.icon && <item.icon className="w-5 h-5" />}
+                      <span className="ml-2">{item.title}</span>
+                    </SidebarMenuButton>
+                  </motion.div>
+                </Link>
+              </SidebarMenuItem>
+            );
+          }
+
+          return (
+            <Collapsible
+              key={item.title}
+              asChild
+              defaultOpen={isParentActive}
+              className="group/collapsible"
+            >
+              <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                  <motion.div variants={buttonVariants} whileHover="hover">
+                    <SidebarMenuButton
+                      tooltip={item.title}
+                      className={`rounded-md transition-colors duration-200 ${
+                        isParentActive
+                          ? "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-200"
+                          : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                      }`}
+                    >
+                      {item.icon && <item.icon className="w-5 h-5" />}
+                      <span className="ml-2">{item.title}</span>
+                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    </SidebarMenuButton>
+                  </motion.div>
+                </CollapsibleTrigger>
+                <CollapsibleContent
+                  as={motion.div}
+                  variants={itemVariants}
+                  initial="closed"
+                  animate={isParentActive ? "open" : "closed"}
+                >
+                  <SidebarMenuSub className="border-l border-blue-200 dark:border-blue-800 ml-4 pl-2">
+                    {item.items?.map((subItem: any) => {
+                      const isSubItemActive = pathname.startsWith(subItem.url);
+                      return (
                         <SidebarMenuSubItem key={subItem.title}>
                           <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
-                              <span>{subItem.title}</span>
-                            </a>
+                            <Link href={subItem.url} onClick={handleLinkClick}>
+                              <motion.div
+                                whileHover={{ scale: 1.05 }}
+                                className={`px-3 py-2 rounded-md transition-colors duration-200 ${
+                                  isSubItemActive
+                                    ? "bg-blue-100 text-blue-600 w-full rounded-xl dark:bg-blue-900 dark:text-blue-200"
+                                    : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                                }`}
+                              >
+                                {subItem.title}
+                              </motion.div>
+                            </Link>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  </CollapsibleContent>
-                </>
-              ) : null}
-            </SidebarMenuItem>
-          </Collapsible>
-        ))}
+                      );
+                    })}
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </SidebarMenuItem>
+            </Collapsible>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
-  )
+  );
 }
