@@ -1,3 +1,2 @@
-# saas-resources-tool
-
-Business owners that will allow their employees to book holidays / time off from their job.
+npm install @prisma/client prisma
+npx prisma generate npx prisma db push
