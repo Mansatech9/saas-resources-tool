@@ -40,7 +40,7 @@ function HeroSection() {
             {/* ---------------- heading text --------------- */}
             <motion.div
               {...bottomAnimation}
-              className='relative flex flex-col text-center items-center '
+              className='relative flex flex-col text-center items-center gap-4'
             >
               <h1 className='text-5xl  md:text-8xl font-medium w-full'>
                 Effortless Time Off Management with
