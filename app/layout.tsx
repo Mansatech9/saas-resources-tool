@@ -1,10 +1,6 @@
 import { type Metadata } from 'next'
-
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
-import MaxWidthWrapper from '@/components/MaxWidthWrapper'
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer/footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -22,30 +18,16 @@ export const metadata: Metadata = {
     'LeaveFlow is a smart and modern HR tool that streamlines employee time off requests, approvals, and tracking—all in one place. Simplify leave management, reduce manual errors, improve transparency, and give your team a stress-free way to handle vacations, sick leaves, and work-from-home requests. Perfect for startups and growing companies that want to save time and boost productivity.',
 }
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    
-      <html lang="en" suppressHydrationWarning>
-        <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-             {/* <MaxWidthWrapper> */}
-         
-       
-         {/* ---------------------Header Starts-----------------  */}
-            <Header />
-            {/* ---------------------Header Ends-------------------  */}
-            {children}
-            {/* ---------------------Footer Starts-----------------  */}
-            <Footer />
-            {/* ---------------------Footer Ends-----------------  */}
-            {/* <ScrollToTop /> */}
-          {/* </MaxWidthWrapper>  */}
-        </body>
-      </html>
-   
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {children}
+      </body>
+    </html>
   )
 }

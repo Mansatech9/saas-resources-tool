@@ -1,6 +1,6 @@
 {
-  "name": "saas-resources-tool",
-  "version": "0.1.0",
+  "name": "leaveflow",
+  "version": "0.1.5",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
