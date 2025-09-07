@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 
 import Link from "next/link";
-import './dashboard.css'
+
 import Page from "../dashboard/page";
 export default async function DashboardLayout({
   children,
